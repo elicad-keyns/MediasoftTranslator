@@ -1,0 +1,2 @@
+# MediasoftTranslator
+ Переводчик для Медиасофта :)
