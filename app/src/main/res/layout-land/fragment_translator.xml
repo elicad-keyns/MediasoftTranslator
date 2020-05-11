@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.translator.TranslatorFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,106 +20,106 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="8dp"
-            android:layout_weight="4"
+            android:layout_weight="3.5"
             android:foreground="@drawable/card_bg_active"
             app:cardCornerRadius="15dp">
 
             <LinearLayout
-                android:layout_margin="10dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
                 android:weightSum="5">
 
                 <EditText
                     android:id="@+id/et_input"
-                    android:hint="@string/input_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
                     android:gravity="start|top"
-                    android:inputType="textMultiLine"/>
+                    android:hint="@string/input_text"
+                    android:inputType="textMultiLine" />
 
                 <Spinner
                     android:id="@+id/s_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:entries="@array/languages"/>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:entries="@array/languages" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="2"
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/ib_translate"
-                android:layout_margin="8dp"
-                android:background="@drawable/button_style_one_bg"
-                android:layout_toStartOf="@id/ib_change"
-                android:layout_alignParentStart="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/arrows_32"/>
+                android:layout_alignParentStart="true"
+                android:layout_margin="8dp"
+                android:layout_toStartOf="@id/ib_change"
+                android:background="@drawable/button_style_one_bg"
+                android:src="@drawable/arrows_32" />
 
             <ImageButton
-                android:layout_margin="8dp"
-                android:paddingEnd="20dp"
-                android:paddingStart="20dp"
                 android:id="@+id/ib_change"
-                android:background="@drawable/button_style_one_bg"
-                android:src="@drawable/change_lang_32"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_toStartOf="@id/ib_share"/>
+                android:layout_margin="8dp"
+                android:layout_toStartOf="@id/ib_share"
+                android:background="@drawable/button_style_one_bg"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:src="@drawable/change_lang_32" />
 
             <ImageButton
                 android:id="@+id/ib_share"
-                android:paddingEnd="20dp"
-                android:paddingStart="20dp"
-                android:layout_alignParentEnd="true"
-                android:layout_margin="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="8dp"
                 android:background="@drawable/button_style_one_bg"
-                android:src="@drawable/share_32"/>
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:src="@drawable/share_32" />
         </RelativeLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="8dp"
-            android:layout_weight="4"
+            android:layout_weight="3.5"
             android:foreground="@drawable/card_bg"
             app:cardCornerRadius="15dp">
 
             <LinearLayout
-                android:layout_margin="10dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
                 android:weightSum="5">
 
                 <EditText
-                    android:hint="@string/output_text"
                     android:id="@+id/et_output"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
                     android:gravity="start|top"
-                    android:inputType="textMultiLine"/>
+                    android:hint="@string/output_text"
+                    android:inputType="textMultiLine" />
 
                 <Spinner
-                    android:entries="@array/languages"
                     android:id="@+id/s_output"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:entries="@array/languages" />
 
             </LinearLayout>
 

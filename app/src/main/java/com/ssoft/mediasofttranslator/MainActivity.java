@@ -1,23 +1,18 @@
 package com.ssoft.mediasofttranslator;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ssoft.mediasofttranslator.interfaces.YandexAPIInterface;
-import com.ssoft.mediasofttranslator.models.LanguageModel;
 import com.ssoft.mediasofttranslator.models.TranslateModel;
-import com.ssoft.mediasofttranslator.ui.dashboard.DashboardFragment;
+import com.ssoft.mediasofttranslator.ui.translator.TranslatorFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -62,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("MainActivity", "Code: " + response.code());
                     return;
                 }
-                DashboardFragment.setOutput(response.body().getText().get(0));
+                TranslatorFragment.setOutput(response.body().getText().get(0));
             }
 
             @Override

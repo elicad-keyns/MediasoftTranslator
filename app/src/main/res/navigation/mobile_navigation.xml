@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.ssoft.mediasofttranslator.ui.dashboard.DashboardFragment"
+        android:name="com.ssoft.mediasofttranslator.ui.translator.TranslatorFragment"
         android:label="@string/title_translator"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_translator" />
 
     <fragment
         android:id="@+id/navigation_notifications"

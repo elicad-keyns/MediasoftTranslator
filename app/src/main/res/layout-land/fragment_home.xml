@@ -6,37 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <LinearLayout
-      android:id="@+id/linearLayout"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@color/colorPrimaryDark"
-      android:orientation="horizontal"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:layout_margin="10dp"
-          android:fontFamily="@font/roboto_black"
-          android:text="@string/home"
-          android:textAlignment="center"
-          android:textColor="#FFFFFF"
-          android:textSize="24sp" />
-    </LinearLayout>
-
     <androidx.cardview.widget.CardView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:cardBackgroundColor="@color/colorGhost"
+      app:cardBackgroundColor="@color/colorPrimaryDark"
       app:cardCornerRadius="20dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+      app:layout_constraintTop_toTopOf="parent">
 
 
         <LinearLayout
@@ -46,7 +24,6 @@
           android:orientation="vertical">
 
             <ImageView
-              android:layout_gravity="center_horizontal"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:src="@drawable/translator_128" />
@@ -58,7 +35,7 @@
               android:fontFamily="@font/roboto_black"
               android:text="Mediasoft Translator \nby\nAlexander Kryuchkov"
               android:textAlignment="center"
-              android:textColor="@color/colorButton" />
+              android:textColor="@color/colorGhost" />
 
         </LinearLayout>
 
