@@ -1,9 +1,13 @@
 package com.ssoft.mediasofttranslator.ui.translator;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +22,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
+import com.google.android.gms.vision.text.TextRecognizer.Builder;
 import com.ssoft.mediasofttranslator.MainActivity;
 import com.ssoft.mediasofttranslator.R;
 
@@ -29,6 +37,7 @@ import static android.app.Activity.RESULT_OK;
 public class TranslatorFragment extends Fragment {
 
     private static final int REQUEST_CODE_SPEECH_INPUT = 1000;
+    private static final int REQUEST_CODE_CAMERA_PHOTO = 1;
 
     private TranslatorViewModel translatorViewModel;
 
@@ -38,6 +47,7 @@ public class TranslatorFragment extends Fragment {
     private ImageButton ib_share;
     private ImageButton ib_change;
     private ImageButton ib_voice_input;
+    private ImageButton ib_photo_input;
     private Spinner s_input;
     private Spinner s_output;
 
@@ -60,6 +70,7 @@ public class TranslatorFragment extends Fragment {
         ib_share = view.findViewById(R.id.ib_share);
         ib_change = view.findViewById(R.id.ib_change);
         ib_voice_input = view.findViewById(R.id.ib_voice_input);
+        ib_photo_input = view.findViewById(R.id.ib_photo_input);
         s_input = view.findViewById(R.id.s_input);
         s_output = view.findViewById(R.id.s_output);
 
@@ -100,6 +111,13 @@ public class TranslatorFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Speak();
+            }
+        });
+
+        ib_photo_input.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getImage();
             }
         });
 
@@ -315,6 +333,11 @@ public class TranslatorFragment extends Fragment {
         }
     }
 
+    private void getImage(){
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, REQUEST_CODE_CAMERA_PHOTO);
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -326,6 +349,27 @@ public class TranslatorFragment extends Fragment {
             }
             else
                 Toast.makeText(getContext(), "Не удалось вас понять...", Toast.LENGTH_SHORT).show();;
+        }
+
+        if (requestCode == REQUEST_CODE_CAMERA_PHOTO && resultCode == RESULT_OK) {
+            // Фотка сделана, извлекаем картинку
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            // Подрубаем рекогнайзер
+            TextRecognizer textRecognizer = new TextRecognizer.Builder(getContext()).build();
+            // Передаем фотку во фрейм
+            Frame frame = new Frame.Builder().setBitmap(photo).build();
+            // Находим букавы )0)
+            SparseArray<TextBlock> sparseArray = textRecognizer.detect(frame);
+            // Подрубаем билдер строк
+            StringBuilder stringBuilder = new StringBuilder();
+            // Добаляем все слова в билдер
+            for (int i=0; i < sparseArray.size(); i++) {
+                TextBlock textBlock = sparseArray.get(i);
+                String str = textBlock.getValue();
+                stringBuilder.append(str);
+            }
+            // Сетим в эдит текст
+            et_input.setText(stringBuilder);
         }
     }
 }
