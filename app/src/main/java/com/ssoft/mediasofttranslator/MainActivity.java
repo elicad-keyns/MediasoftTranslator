@@ -23,8 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    static String API_KEY = "trnsl.1.1.20200507T081401Z.4caa33daf596e9cb.08b226257c92b02eb19f85e91d48207a7ac0c3a2";
-    static String API_URL = "https://translate.yandex.net/api/v1.5/tr.json/";
+    static String   API_KEY = "trnsl.1.1.20200507T081401Z.4caa33daf596e9cb.08b226257c92b02eb19f85e91d48207a7ac0c3a2";
+    static String   API_URL = "https://translate.yandex.net/api/v1.5/tr.json/";
 
     static List<String> languageModelList;
 

@@ -12,4 +12,10 @@
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
+    <style name="popupMenu" parent="@style/Widget.MaterialComponents.PopupMenu">
+        <item name="android:popupBackground">@drawable/history_popup_bg</item>
+        <item name="android:textColor">@color/colorAccent</item>
+
+    </style>
+
 </resources>
